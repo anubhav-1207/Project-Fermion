@@ -197,7 +197,7 @@ But when printing existing variables, use var(...) without type.
 
 ## Example Project: User Info Processor 
 
-``` Fermion
+```Python
 alloc bytelimit 5M
 
 func main index[0]:
