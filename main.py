@@ -1,7 +1,7 @@
 print('Welcome to Fermion')
 
 variables = {}
-list_command = ('set','print','add','sub','mod','type')
+list_command = ('set','print','add','sub','mod','type','rename','list','purge')
 # username = input("Enter your username : ").strip()
 while True:
     line = input(f'>>> @fermion ~$ ')
@@ -109,11 +109,24 @@ while True:
                 print(-value)
             else:
                 print(value)
-                
-    
-            
+
+
+
+# Rename Command = "rename {old_var} {new_var}
+    elif len(command) == 3 and command[0] == 'rename':
+        var_new = command[2]
+        var_old = command[1]
+
+        if var_new not in variables and var_old in variables:
+            variables[var_new] = variables[var_old]
+            print(f'Renamed {var_old} to {var_new}')
+            del variables[var_old]
             
 
-    
+# List Command = "list"  
+    elif len(command) == 1 and command[0] == 'list':
+        print(variables)
 
-                
+# Purge Command = 'purge'
+    elif len(command) == 1 and command[0] == 'purge':
+        variables.clear()
