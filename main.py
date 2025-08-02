@@ -1,10 +1,10 @@
 print('Welcome to Fermion')
 
 variables = {}
-list_command = ('set','print','add','sub')
-username = input("Enter your username : ").strip()
+list_command = ('set','print','add','sub','mod','type')
+# username = input("Enter your username : ").strip()
 while True:
-    line = input(f'>>> {username}@fermion ~$ ')
+    line = input(f'>>> @fermion ~$ ')
     command = line.split()
 
     if command[0] not in list_command:
@@ -20,11 +20,17 @@ while True:
         var_name = command[1]
         try:
             value = int(command[3])
+            variables[var_name] = (value)
         except ValueError:
             print("### Error : Not An Integer")
-        variables[var_name] = value 
 
-    
+# Type Command = "type {var}"
+    if command[0] == 'type':
+        var_name = command[1]
+        if var_name in variables:
+            print(type(variables[var_name]))
+        else:
+            print("### Error : Variable not defined")
 
 # Print Command = "print {var_name}"
     elif len(command) == 2 and command[0] == 'print':
@@ -81,8 +87,33 @@ while True:
 
 
 # Div Command = div {var1} / {var2}
+    elif len(command) == 4 and command[0] == 'div':
+        var1 = command[1]
+        var2 = command[3]   
+
+        if var1 and var2 in variables:
+            num1 = variables[var1]
+            num2 = variables[var2]
+            result = num1 // num2 
+            print(result)
+    
+# Mod Command = mod {var}
+    elif len(command) == 2 and command[0] == 'mod':
+        if var_name in variables:
+            try:
+                value = variables[var_name]
+            except:
+                print('### ValueError : not an integer')
+               
+            if value < 0:
+                print(-value)
+            else:
+                print(value)
+                
     
             
             
 
     
+
+                
