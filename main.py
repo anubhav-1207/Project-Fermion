@@ -79,7 +79,7 @@ while True:
         var1 = command[1]
         var2 = command[3]   
 
-        if var1 and var2 in variables:
+        if var1 in variables and var2 in variables:
             num1 = variables[var1]
             num2 = variables[var2]
             result = num1 * num2 
@@ -94,12 +94,16 @@ while True:
         if var1 and var2 in variables:
             num1 = variables[var1]
             num2 = variables[var2]
+            if num2 == 0:
+                print('''### ZeroDivision Error : Can't Divide by zero''')
             result = num1 // num2 
             print(result)
     
 # Mod Command = mod {var}
     elif len(command) == 2 and command[0] == 'mod':
+        var_name = command[1]
         if var_name in variables:
+    
             try:
                 value = variables[var_name]
             except:
