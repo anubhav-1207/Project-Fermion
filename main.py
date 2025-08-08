@@ -1,22 +1,31 @@
+import time
+import os
+import sys
+
+def clear():
+    os.system('cls')
+
+
+
 print('Welcome to Fermion')
 
 variables = {}
-list_command = ('int','print','add','sub','mod','type','rename','list','purge','mul','div','ferm','del','find','loop','str')
-username = input("Enter your username : ").strip()
+list_command = ('int','print','add','sub','mod','type','rename','list','purge','mul','div','ferm','del','find','loop','str','exit')
 
-def ferm_runner():
-    while True:
-        line = input(f'>>> @fermion ~$ ')
-        command = line.split()
-
-        if command[0] not in list_command:
-            print("<SyntaxError>:Invalid Command")
-            continue
-        else:
-            pass
+def linux():
+    pass
 
 
-    # Int Command = "int {var_name} = {integer}"
+def process(command):
+    if not command:
+        return
+    
+    if command[0] not in list_command:
+        print("<SyntaxError>:Invalid Command")
+        return
+    
+    else:
+# Int Command = "int {var_name} = {integer}"
         if command[0] == 'int' and command[2] == '=':
             var_name = command[1]
             raw_value = command[3]
@@ -24,10 +33,9 @@ def ferm_runner():
                 value = int(raw_value)
                 variables[var_name] = value
             except ValueError:
-                print("<ValueError>:Not An Integer")        
-            
+                print("<ValueError>:Not An Integer")   
 
-    # Type Command = "type {var}"
+# Type Command = "type {var}"
         elif command[0] == 'type':
             var_name = command[1]
             if var_name in variables:
@@ -35,7 +43,7 @@ def ferm_runner():
             else:
                 print("<NameError:Variable not defined")
 
-    # Print Command = "print {var_name}"
+# Print Command = "print {var_name}"
         elif len(command) == 2 and command[0] == 'print':
             var_name = command[1] 
             if var_name in variables:
@@ -46,42 +54,50 @@ def ferm_runner():
 
 
 
-    # Add Command = "add {var1} + var{2}"
+# Add Command = "add {var1} + var{2}"
         elif len(command) == 4 and command[0] == 'add':
             var1 = command[1]
             var2 = command[3]
-            if var1 and var2 in variables:
-                num1 = variables[var1]
+            if var1 in variables and var2 in variables:
+                try:
+                    num1 = variables[var1]
                 # num1 = int(num1)
             
-                num2 = variables[var2]
+                    num2 = variables[var2]
                 # num2 = int(num2)
-                result = num1 + num2 
-                print(result)
+                    result = num1 + num2 
+                    print(result)
                 
+                except TypeError:
+                    print(f'<TypeError>: Not an integer')
             else:
                 print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
 
 
 
 
-    # Sub Command = "sub {var1} - {var2}"
+# Sub Command = "sub {var1} - {var2}"
         elif len(command) == 4 and command[0] == 'sub':
             var1 = command[1]
             var2 = command[3]   
 
-            if var1 and var2 in variables:
-                num1 = variables[var1]
-                num2 = variables[var2]
-                result = num1 - num2 
-                print(result)
+            if var1 in variables and var2 in variables:
+                try:
+                    num1 = variables[var1]
+                    num2 = variables[var2]
+                    result = num1 - num2 
+                    print(result)
+
+                except TypeError:
+                    print(f'<TypeError>: Not an integer')
+                   
             
             else:
                 print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
 
                 
                 
-    # Mul Command = "mul {var1} * {var2}"
+# Mul Command = "mul {var1} * {var2}"
         elif len(command) == 4 and command[0] == 'mul':
             var1 = command[1]
             var2 = command[3]   
@@ -97,12 +113,12 @@ def ferm_runner():
 
 
 
-    # Div Command = div {var1} / {var2}
+# Div Command = div {var1} / {var2}
         elif len(command) == 4 and command[0] == 'div':
             var1 = command[1]
             var2 = command[3]   
 
-            if var1 and var2 in variables:
+            if var1 in variables and var2 in variables:
                 num1 = variables[var1]
                 num2 = variables[var2]
                 if num2 == 0:
@@ -114,28 +130,29 @@ def ferm_runner():
                 print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
 
         
-    # Mod Command = mod {var}
+# Mod Command = mod {var}
         elif len(command) == 2 and command[0] == 'mod':
             var_name = command[1]
             if var_name in variables:
         
                 try:
                     value = variables[var_name]
-                except:
-                    print('### ValueError : not an integer')
-                
-                if value < 0:
-                    print(-value)
-                else:
-                    print(value)
+                    if value < 0:
+                        print(-value)
+                    else:
+                        print(value)
 
+                except TypeError:
+                    print('<ValueError> : not an integer')
+                
+                
             else:
                 print(f"<NameError>:Variable '{var_name} not Defined")
 
 
 
 
-    # Rename Command = "rename {old_var} {new_var}
+# Rename Command = "rename {old_var} {new_var}
         elif len(command) == 3 and command[0] == 'rename':
             var_new = command[2]
             var_old = command[1]
@@ -156,11 +173,7 @@ def ferm_runner():
 
             
             
-
-
-
-
-    # Purge Command = 'purge'
+# Purge Command = 'purge'
         elif len(command) == 1 and command[0] == 'purge':
             if variables:
                 variables.clear()
@@ -169,7 +182,7 @@ def ferm_runner():
                 print(f"<NameError>:List '{variables}' is empty")
 
 
-    # List Command = "list"
+# List Command = "list"
         elif len(command) == 1 and command[0] == 'list':
             if variables:
                 print('Variables :')
@@ -178,58 +191,76 @@ def ferm_runner():
             else:
                 print(f"<NameError>:Variable '{variables}' is empty")
                     
-    # Del Command = "del {var_name}"
+# Del Command = "del {var_name}"
         elif len(command) == 2 and command[0] == 'del':
             var_name = command[1]
-            del variables[var_name]
+            try:
+                del variables[var_name]
+            except KeyError:
+                print(f"<NameError> : Variable {var_name} not Defined")
 
 
-    # Find Command = "find {var_name}"
-        elif len(command) == 2 and command[0] == 'find':
-            value = int(command[1])
-            keys = [k for k , v in variables.items() if v == value]
-            print(keys)
-
-    # Loop Command = "loop {value} {times}"
+# Loop Command = "loop {value} {times}"
         elif len(command) == 3 and command[0] == 'loop':
             value = command[1]
             var_new = int(command[2])
             for x in range(var_new):
                 print(value)
 
-    # Str Command = "str {var} {string}" 
-        elif len(command) == 3 and command[0] == 'str':
+# Str Command = "str {var} = {string}" 
+        elif len(command) == 4 and command[0] == 'str':
             var_name = command[1]
             try:
-                string = str(command[2])
+                string = str(command[3])
                 variables[var_name] = (string)
             except ValueError:
                 print("Not A String")
                 value = int(command[3])
 
-    # Easter Egg: cat
-        elif len(command) == 1 and command[0] == 'aditya':
-            print("You Found An Easter Egg : This tells us that Aditya is my bestfriend.")
 
+# Ferm Run Command = ferm run {filename}
+        elif len(command) == 3 and command[0] == 'ferm' and command[1] == 'run':
+            filename = command[2]
+            reader(filename)
 
+# Exit = exit
+        elif command[0] == 'exit' and len(command) == 1:
+            sys.exit()
+            
+
+username = input("Enter your username : ")
+read_file = input("Open Fermion in terminal shell? (y/n) : ").strip().lower()
+print("Creating Environment...")
+time.sleep(1)
+os_present = input(''' 
+        1. Windows
+        2. MacOS
+        3. Ubuntu
+        4. Arch/Alpine/Kali 
+        5. Debian
+           
+        Choose Environment OS : ''')
+print("Parsing Kernel...")
+time.sleep(2)
+print("Completed.")
+  
+def reader(filename):
+    # filename = input("FileName? : ")
+    print("======================================================")
+    print("Opening File...")
+    print("======================================================")
     
+    time.sleep(0.5)
+    
+    try:
+        with open (filename) as f:
+            for line in f:
+                process(line.strip().split())
 
+    except FileNotFoundError:
+        print(f"<FileNotFound> : The file {filename} couldn't be imported")
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ferm_runner()
+while True:
+    line = str(input(f">>> {username}@fermion ~$ ")) 
+    process(line.split())
