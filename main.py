@@ -122,9 +122,10 @@ def process(command):
                 num1 = variables[var1]
                 num2 = variables[var2]
                 if num2 == 0:
-                    print('''ZeroDivisionError:Can't Divide by zero''')
-                result = num1 // num2 
-                print(result)
+                    print('''<ZeroDivisionError>: Can't Divide by zero''')
+                else:
+                    result = num1 // num2 
+                    print(result)
 
             else:
                 print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
