@@ -207,6 +207,13 @@ def ferm_runner():
                 print("Not A String")
                 value = int(command[3])
 
+    # Easter Egg: cat
+        elif len(command) == 1 and command[0] == 'aditya':
+            print("You Found An Easter Egg : This tells us that Aditya is my bestfriend.")
+
+
+    
+
 
 
 
