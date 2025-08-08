@@ -1,6 +1,3 @@
-set x = 6
-set y = 8
+int x = 6
+int y = 8
 add x + y 
-mod x 
-list 
-del x 
