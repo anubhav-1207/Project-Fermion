@@ -10,10 +10,43 @@ def clear():
 print('Welcome to Fermion')
 
 variables = {}
-list_command = ('int','print','add','sub','mod','type','rename','list','purge','mul','div','ferm','del','find','loop','str','exit')
+list_command = ('int','print','add','sub','mod','type','rename','list','purge','mul','div','ferm','del','find','loop','str','exit','username')
 
 def linux():
     pass
+
+def multiplication(var1,var2):
+    if var1 in variables and var2 in variables:
+                num1 = variables[var1]
+                num2 = variables[var2]
+                result = num1 * num2 
+                print(result)
+
+    else:
+        print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
+
+def subtraction(var1,var2):
+    if var1 in variables and var2 in variables:
+        try:
+            num1 = variables[var1]
+            num2 = variables[var2]
+            result = num1 - num2 
+            print(result)
+
+        except TypeError:
+            print(f'<TypeError>: Not an integer')
+            
+    
+    else:
+        print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
+
+
+def username_reset(old,new):
+    with open('authentication.txt','w') as f:
+        line = f.readline().strip()
+        line = 'username :'+new + '\n'
+
+
 
 
 def process(command):
@@ -81,20 +114,7 @@ def process(command):
             var1 = command[1]
             var2 = command[3]   
 
-            if var1 in variables and var2 in variables:
-                try:
-                    num1 = variables[var1]
-                    num2 = variables[var2]
-                    result = num1 - num2 
-                    print(result)
-
-                except TypeError:
-                    print(f'<TypeError>: Not an integer')
-                   
-            
-            else:
-                print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
-
+            subtraction(var1,var2)
                 
                 
 # Mul Command = "mul {var1} * {var2}"
@@ -102,15 +122,7 @@ def process(command):
             var1 = command[1]
             var2 = command[3]   
 
-            if var1 in variables and var2 in variables:
-                num1 = variables[var1]
-                num2 = variables[var2]
-                result = num1 * num2 
-                print(result)
-
-            else:
-                print(f"<NameError>:Variable '{var1}' or/and '{var2}' not Defined")
-
+            multiplication(var1,var2)
 
 
 # Div Command = div {var1} / {var2}
@@ -229,7 +241,20 @@ def process(command):
             sys.exit()
             
 
-username = input("Enter your username : ")
+try:
+    with open('authentication.txt', 'r') as f:
+        line = f.readline().strip()
+        username = line.split(':', 1)[1].strip()
+        if not username:
+            raise ValueError("Empty username in file")
+        print(f'Logged in as @{username}')
+
+except (FileNotFoundError, IndexError, ValueError):
+    username = input("Enter your username: ").strip()
+    with open('authentication.txt', 'w') as f:
+        f.write(f"username : {username}\n")
+
+
 read_file = input("Open Fermion in terminal shell? (y/n) : ").strip().lower()
 print("Creating Environment...")
 time.sleep(1)
