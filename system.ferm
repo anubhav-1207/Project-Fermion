@@ -1,3 +1,34 @@
-int x = 6
-int y = 8
-add x + y 
+int a = 10
+int b = 5
+int notint = xyz
+add a + b
+add a + c
+sub a - b
+sub a - xyz
+mul a * b
+mul a * xyz
+div a / b
+div a / zero
+int zero = 0
+div a / zero
+mod a
+mod neg
+int neg = -15
+mod neg
+rename a x
+rename a b
+rename x b
+purge
+list
+str s = hello
+str t = 123
+print s
+print t
+type s
+type xyz
+del s
+del s
+int loopvar = 42
+loop 3 loopvar
+loop 5 notvar
+ferm run nonexist.ferm
