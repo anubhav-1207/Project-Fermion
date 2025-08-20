@@ -49,7 +49,7 @@ def main():
     def username_reset(new_name):
         global username
         username = new_name.strip()
-        with open('authentication.txt','w') as f:
+        with open('authentication.fermlog','w') as f:
             f.write(f'Username : {username}\n')
         print(f"Changed Username To {username}")
         
@@ -272,7 +272,7 @@ def main():
 
     except (FileNotFoundError, IndexError, ValueError):
         username = input("Enter your username: ").strip()
-        with open('authentication.txt', 'w') as f:
+        with open('authentication.fermlog', 'w') as f:
             f.write(f"username : {username}\n")
 
 
@@ -309,6 +309,7 @@ def password():
             pswd = line.split(':', 1)[1].strip()
     
     except (FileNotFoundError,IndexError):
+        passw = input("Set a new password : ")
         with open('password.fermlog','w') as f:
             f.write(f'Password : {passw}')
             main()
