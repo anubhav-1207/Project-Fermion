@@ -271,7 +271,7 @@ def main():
             print(f'Logged in as @{username}')
 
     except (FileNotFoundError, IndexError, ValueError):
-        username = input("Enter your username: ").strip()
+        username = input("Set your new username: ").strip()
         with open('authentication.fermlog', 'w') as f:
             f.write(f"username : {username}\n")
 
@@ -316,7 +316,7 @@ def password():
     i = 0
     while i<=5:
         i += 1
-        passw = input("Password2 : ")
+        passw = input("Password : ")
         if passw == pswd:
             break
         elif passw != pswd and i >= 5:
