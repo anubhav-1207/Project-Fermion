@@ -44,3 +44,7 @@ while passwd != password:
     passwd = input("Password : ")
 
 line_input = input(f">>> {username}@fermion ~$ ")
+
+# Fix : 
+# 1. Useless file opening 
+# 2. Empty username and password security 
