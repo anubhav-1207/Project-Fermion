@@ -1,9 +1,19 @@
 variables = {}
 
-def integer(var_name,raw_value):
+def integer(value,var):
     try:
-        value = int(raw_value)
-        var_name = commands[1]
-        variables[var_name] = value
-    except:
-        print("Invalid Operation! Please Try Again")
+        value = int(value)
+        variables[var] = value
+         
+    except ValueError:
+        print("<ValueError> : Given value is not an integer")
+
+def add(var1,var2):
+    #try:
+    val1 = variables[var1]
+    val2 = variables[var2]
+    val1 = int(val1)
+    val2 = int(val2)
+    print(val1+val2)
+#except:
+        #print("Invalid Operation")
