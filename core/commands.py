@@ -15,5 +15,25 @@ def add(var1,var2):
     val1 = int(val1)
     val2 = int(val2)
     print(val1+val2)
-#except:
-        #print("Invalid Operation")
+
+def diff(var1,var2):
+    val1 = variables[var1]
+    val2 = variables[var2]
+    val1 = int(val1)
+    val2 = int(val2)
+    print(val1 - val2)
+
+def prod(var1,var2):
+    val1 = variables[var1]
+    val2 = variables[var2]
+    val1 = int(val1)
+    val2 = int(val2)
+    print(val1*val2)
+
+def recprod(var1,var2):
+    val1 = variables[var1]
+    val2 = variables[var2]
+    val1 = int(val1)
+    val2 = int(val2)
+    print(val1/val2)
+
