@@ -2,4 +2,7 @@ def inv_operator():
     print('<SyntaxError> : Invalid operator')
 
 def not_exist():
-    print("<TypeError>: Variable(s) not found")
+    print("<ValueError> : Variable(s) not found")
+
+def empty():
+    print("<NullError> : No variables defined yet")

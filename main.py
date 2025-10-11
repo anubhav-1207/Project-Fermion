@@ -1,4 +1,3 @@
-import time
 from core.interpreter import start_shell
 
 def login():
@@ -60,7 +59,6 @@ def login():
         
 if __name__ == "__main__":
     print("Fermion v1.2.1")
-    time.sleep(1)
     user = login()
     start_shell(user)
 
