@@ -124,3 +124,59 @@ def start_shell(user):
 
             else:
                 errors.not_exist()
+
+        elif cmd == 'purge':
+            if variables:
+                commands.purge()
+
+            else:
+                errors.empty()
+
+        # elif cmd == 'find':
+        #     val1 = command[1]
+        #     if val1 in variables:
+        #         commands.find_check(val1)
+        #     else:
+        #         errors.not_exist()
+
+        elif cmd == 'ferm': # ferm run data.ferm
+            filename = command[2]
+            commands.ferm(filename)
+
+        elif cmd == 'sqr': # sqr  var x
+            var1 = command[2]
+            if var1 in variables:
+                commands.square(var1)
+            else:
+                errors.not_exist()
+
+        elif cmd == 'loop': # loop var x => 5
+            var1 = command[2]
+            index = int(command[4])
+            if var1 in variables:
+                commands.loop(var1,index)
+            else:
+                errors.not_exist()
+            
+        elif cmd == 'str': # str x = '476geg'
+            var1 = command[1]
+            string = str(command[3:])
+            commands.str(var1,string)
+
+        elif cmd == 'expo': # expo x ^ 22
+            var1 = command[1]
+            if var1 in variables:
+                power = int(command[3])
+                commands.expo(var1,power)
+            else:
+                errors.not_exist()
+
+        elif cmd == 'help':
+            commands.help()
+
+        elif cmd == 'evaluate': # evaluate 
+            expression = command[1]
+            commands.evaluate(expression)
+            
+            
+            
