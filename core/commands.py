@@ -1,7 +1,7 @@
 from core import interpreter
 variables = {}
 
-command_list = ['int','add','diff','prod','recprod','mod','show','list','del','rename','type','purge','find','ferm','sqr','loop','str','expo','help','evaluate','turtle'] 
+command_list = ['int','add','diff','prod','recprod','mod','show','list','del','rename','type','purge','find','ferm','sqr','loop','str','expo','help','evaluate','turtle','fermion'] 
 
 def integer(value,var):
     try:
@@ -137,3 +137,8 @@ def turtle():
 ''')
     
     print("Congratulations!! You have found the turtle easter egg!")
+
+# To-Do Tommorow:
+# 1. Add new commands
+# 2. Proper Error Handling
+

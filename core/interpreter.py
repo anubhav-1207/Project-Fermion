@@ -253,5 +253,18 @@ def start_shell(user):
         # Turtle Command
         elif cmd == 'turtle':
             commands.turtle()
+
+        # Easter Egg #2 Command
+        elif cmd == 'fermion':
+            fermion_para = '''In physics, fermions are the fundamental building blocks of matter.
+Similarly, Fermion is designed as a fundamental building block interpreter for learning and experimenting with language creation.
+Fermion was created with the intention of providing a simple yet powerful platform for users to explore programming concepts and language design.
+Just as fermions follow the Pauli exclusion principle, Fermion aims to provide a unique and exclusive experience for each user, allowing them to create and manipulate their own programming languages without interference.
+Fermion is not just an interpreter; it's a playground for creativity and innovation in the world of programming languages.
+So dive in, experiment, and let your imagination run wild with Fermion.'''
+            print(fermion_para.center(80))
+
+
+        
             
             
