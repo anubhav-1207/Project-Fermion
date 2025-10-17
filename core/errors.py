@@ -6,3 +6,6 @@ def not_exist():
 
 def empty():
     print("<NullError> : No variables defined yet")
+
+def type_mismatch():
+    print("<TypeError> : Type mismatch encountered")

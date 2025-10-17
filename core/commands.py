@@ -1,7 +1,7 @@
 from core import interpreter
 variables = {}
 
-command_list = ['int','add','diff','prod','recprod','mod','show','list','del','rename','type','purge','find','ferm','sqr','loop','str','expo','help','evaluate'] 
+command_list = ['int','add','diff','prod','recprod','mod','show','list','del','rename','type','purge','find','ferm','sqr','loop','str','expo','help','evaluate','turtle'] 
 
 def integer(value,var):
     try:
@@ -124,11 +124,16 @@ def help():
     expo <var> ^ <power>        : Raise the value of a variable to a specified power
     help                        : Show this help message
     exit                        : Exit the interpreter
-
+    evaluate <expression>       : Evaluate a mathematical expression
     '''
     print(help_output)
 
 def evaluate(expression):
     print(eval(expression))
     
+def turtle():
+    print('''Turtles are basically the introverts of the animal kingdom who accidentally invented mobile homes. They stroll around like they’ve got all the time in the world—which, honestly, they do. While other creatures are out there sprinting, hunting, or stressing about survival, turtles are just like, “Nah, I’m good,” munching on a leaf for six hours straight. Their whole vibe screams self-care. They don’t rush, they don’t panic, they just… exist, like little zen monks with shells. And have you ever noticed how they look mildly offended all the time? It’s like every turtle was promised a glam life as a dragon but ended up being a slow salad enthusiast instead. Yet somehow, they made it iconic. When they tuck themselves into their shells, it’s not fear—it’s boundaries. Pure, healthy boundaries. Baby turtles? Absolute chaos gremlins in tiny armor, charging bravely toward the ocean like it’s an action movie. Old turtles? Unbothered sages who’ve seen empires rise and fall and still refuse to move faster than 1 km/h. Honestly, turtles are proof that life isn’t a race—it’s a very, very slow parade, and if you look cute enough doing it, everyone will cheer anyway.
 
+''')
+    
+    print("Congratulations!! You have found the turtle easter egg!")
