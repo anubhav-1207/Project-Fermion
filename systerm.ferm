@@ -1,0 +1,4 @@
+int x = 123
+show x 
+int y = 123
+diff x - y

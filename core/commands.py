@@ -1,6 +1,6 @@
 variables = {}
 
-command_list = ['int','add','diff','prod','recprod','mod','show','list','del','rename','type'] 
+command_list = ['int','add','diff','prod','recprod','mod','show','list','del','rename','type','ferm'] 
 
 def integer(value,var):
     try:
@@ -64,4 +64,4 @@ def rename(var_new,var_old):
 
 def type_check(var1):
     print(type(variables[var1]))
-    
+

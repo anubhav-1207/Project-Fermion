@@ -3,23 +3,10 @@ from core.commands import variables
 from core import errors
 
 def start_shell(user):
-    while True:
-        line = input(f"{user}@fermion ~$ ")
-        if line == 'exit':
-            break
-        elif line == '' or line == ' ':
-            print("Empty Not Allowed")
-
-        command = line.split()
-        try:
-            cmd = command[0]
-        except IndexError:
-            print("<NullError> : Empty input failed to parse")
-            continue
-        
+    def commandRunner(cmd, command,user):
         if cmd not in commands.command_list:
             print(f"<CommandError> : '{cmd}' is not a recognized command")
-            continue
+            start_shell(user)
 
         elif cmd == 'int': # int var = value
             if command[2] == '=':
@@ -124,3 +111,25 @@ def start_shell(user):
 
             else:
                 errors.not_exist()
+    while True:
+        line = input(f"{user}@fermion ~$ ")
+        if line == 'exit':
+            break
+        elif line == '' or line == ' ':
+            print("Empty Not Allowed")
+sss
+
+        command = line.split()
+        try:
+            cmd = command[0]
+            commandRunner(cmd,command,user)
+        except IndexError:
+            print("<NullError> : Empty input failed to parse")
+            continue
+
+        
+
+        
+
+
+
