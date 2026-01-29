@@ -117,7 +117,7 @@ def start_shell(user):
             break
         elif line == '' or line == ' ':
             print("Empty Not Allowed")
-sss
+
 
         command = line.split()
         try:
